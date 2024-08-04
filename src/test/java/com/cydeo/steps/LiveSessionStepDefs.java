@@ -1,11 +1,16 @@
 package com.cydeo.steps;
 
+import com.cydeo.pages.BookPage;
 import com.cydeo.pages.UsersPage;
 import com.cydeo.utility.BrowserUtil;
 import com.cydeo.utility.DB_Util;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.opentelemetry.semconv.trace.attributes.SemanticAttributes;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
+
+import java.awt.print.Book;
 
 public class LiveSessionStepDefs {
 
@@ -46,6 +51,36 @@ public class LiveSessionStepDefs {
 
         // To be able to reach out actualUserCount variable, declare it to class level not in previous step:
         Assert.assertEquals(expectedCount,actualUserCount);
+    }
+
+    BookPage bookPage=new BookPage();
+    String actualBookCount;
+    // LS-02
+    @When("the user gets {string} book count")
+    public void the_user_gets_book_count(String categoryName) {
+
+        BrowserUtil.selectByVisibleText(bookPage.mainCategoryElement,categoryName);
+        BrowserUtil.waitFor(2);
+
+        String bookDetails = bookPage.bookCount.getText();
+        actualBookCount = bookPage.getCount(bookDetails);
+        System.out.println("actualBookCount = " + actualBookCount);
+
+
+    }
+    @Then("the {string} book count should be equal with database")
+    public void the_book_count_should_be_equal_with_database(String categoryName) {
+
+        String query="select count(*) from books b " +
+                "inner join book_categories bc on bc.id=b.book_category_id " +
+                "where bc.name='"+categoryName+"'";
+
+        DB_Util.runQuery(query);
+
+        String expectedBookCount = DB_Util.getFirstRowFirstColumn();
+        Assert.assertEquals(expectedBookCount,actualBookCount);
+
+
     }
 
 }

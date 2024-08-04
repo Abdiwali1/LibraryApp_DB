@@ -45,3 +45,10 @@ where status='INACTIVE';
 
 select count(*) from users
 where status='INACTIVE';
+
+-- How many book we have in each category name ?
+
+select bc.name, count(*)
+from books b
+            inner join book_categories bc on bc.id=b.book_category_id
+where bc.name='Anthology' ;
