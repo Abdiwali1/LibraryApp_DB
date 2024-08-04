@@ -1,3 +1,5 @@
+#Day RRecordings Exercises
+
 select count(*) from books;
 
 select count(*) from users;
@@ -16,3 +18,4 @@ select full_name from users
 where email = 'librarian55@library';
 
 select status from users where email='anisa.stokes@gmail.com';
+
