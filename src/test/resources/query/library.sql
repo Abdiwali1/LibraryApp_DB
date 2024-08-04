@@ -1,4 +1,4 @@
-#Day RRecordings Exercises
+#Day Recordings Exercises
 
 select count(*) from books;
 
@@ -19,3 +19,29 @@ where email = 'librarian55@library';
 
 select status from users where email='anisa.stokes@gmail.com';
 
+-- Live Session Queries
+
+-- How many users that is active?
+select * from users
+where status='ACTIVE';
+
+select count(*) from users
+where status='ACTIVE';
+
+-- 1 - Admin
+-- 2 - Librarian
+-- 3 - Student
+
+-- Active users
+-- UI 120
+-- DB 126(& admins included) --> (user_group_id=1)
+
+select count(*) from users
+where status='ACTIVE' and user_group_id <> 1;
+
+-- How many users that is inactive?
+select * from users
+where status='INACTIVE';
+
+select count(*) from users
+where status='INACTIVE';
