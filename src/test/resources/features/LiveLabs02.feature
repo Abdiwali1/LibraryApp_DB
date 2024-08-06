@@ -16,5 +16,5 @@ Feature: Books module
     And verify "<Book Name>" information must match with DB
     Examples:
       | Book Name          | ISBN     | Year | Author | Book Category   |
-      | Best Batch Ever 33 | 11200824 | 1960 | MS     | Fan-Fiction     |
+      | Best Batch Ever 34 | 11200824 | 1960 | MS     | Fan-Fiction     |
       | Still Waiting      | 17521829 | 1988 | MS     | Science Fiction |
