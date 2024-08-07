@@ -42,4 +42,45 @@ public class LiveLabsStepDefs {
     public void verify_is_the_most_popular_book_genre(String expectedCategory) {
         Assert.assertEquals(expectedCategory, actualCategory);
     }
+
+    /**
+     * Live Lab feature 2
+     */
+
+    @When("the librarian click to add book")
+    public void the_librarian_click_to_add_book() {
+
+    }
+    @When("the librarian enter book name {string}")
+    public void the_librarian_enter_book_name(String bookName) {
+
+    }
+    @When("the librarian enter ISBN {string}")
+    public void the_librarian_enter_isbn(String isbn) {
+
+    }
+    @When("the librarian enter year {string}")
+    public void the_librarian_enter_year(String year) {
+
+    }
+    @When("the librarian enter author {string}")
+    public void the_librarian_enter_author(String author) {
+
+    }
+    @When("the librarian choose the book category {string}")
+    public void the_librarian_choose_the_book_category(String bookCategory) {
+
+    }
+    @When("the librarian click to save changes")
+    public void the_librarian_click_to_save_changes() {
+
+    }
+    @Then("verify {string} message is displayed")
+    public void verify_message_is_displayed(String expectedMessage) {
+
+    }
+    @Then("verify {string} information must match with DB")
+    public void verify_information_must_match_with_db(String expectedBookName) {
+
+    }
 }
