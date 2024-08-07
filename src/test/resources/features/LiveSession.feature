@@ -12,7 +12,7 @@ Feature: User module
     When the user gets "INACTIVE" user count
     And the "INACTIVE" user count should be equal database
 
-@wip @db
+ @db
   Scenario Outline: Librarian should able to ACTIVE/INACTIVE book count
     Given the user logged in as "librarian"
     And the user navigates to "Books" page

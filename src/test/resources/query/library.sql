@@ -1,4 +1,4 @@
-#Day Recordings Exercises
+--  Day Recordings Exercises
 
 select count(*) from books;
 
@@ -9,7 +9,7 @@ where is_returned = 0;
 
 select name from book_categories;
 
-# name,author ,isbn,desc,year
+--  name,author ,isbn,desc,year
 
 select name,isbn,year,author,description from books
 where name = 'Agile Testing';
@@ -52,3 +52,7 @@ select bc.name, count(*)
 from books b
             inner join book_categories bc on bc.id=b.book_category_id
 where bc.name='Anthology' ;
+
+-- Morning Live Lab Session
+SELECT * FROM users
+WHERE email='librarian555@library';
