@@ -15,6 +15,9 @@ public class BookPage extends BasePage {
     @FindBy(xpath = "//input[@type='search']")
     public WebElement search;
 
+    @FindBy(xpath = "//div[@class='portlet-title']//a")
+    public WebElement addBook;
+
     @FindBy(id = "book_categories")
     public WebElement mainCategoryElement;
 
