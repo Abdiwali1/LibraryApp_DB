@@ -65,5 +65,5 @@ group by bc.name
 order by count(*) desc
 limit 1;
 
-select * from books
+select name from books
 where name='Mollie Jacobs' and author='MS';

@@ -66,9 +66,11 @@ public class LiveLabsStepDefs {
     public void the_librarian_enter_year(String year) {
         bookPage.year.sendKeys(year);
     }
+    String bookAuthor;
     @When("the librarian enter author {string}")
     public void the_librarian_enter_author(String author) {
         bookPage.author.sendKeys(author);
+        bookAuthor=author;
     }
     @When("the librarian choose the book category {string}")
     public void the_librarian_choose_the_book_category(String bookCategory) {
@@ -82,10 +84,21 @@ public class LiveLabsStepDefs {
     }
     @Then("verify {string} message is displayed")
     public void verify_message_is_displayed(String expectedMessage) {
-
+        String actualMessage = bookPage.toastMessage.getText();
+        Assert.assertEquals(expectedMessage,actualMessage);
     }
     @Then("verify {string} information must match with DB")
     public void verify_information_must_match_with_db(String expectedBookName) {
+
+        String query="select name from books " +
+                "where name='"+expectedBookName+"' and author='"+bookAuthor+"'";
+
+        DB_Util.runQuery(query);
+
+        String actualBookName = DB_Util.getFirstRowFirstColumn();
+
+        Assert.assertEquals(expectedBookName,actualBookName);
+
 
     }
 }
