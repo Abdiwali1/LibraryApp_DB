@@ -56,3 +56,12 @@ where bc.name='Anthology' ;
 -- Morning Live Lab Session
 SELECT * FROM users
 WHERE email='librarian555@library';
+
+
+SELECT bc.name FROM book_borrow bb
+    inner join  books b on bb.book_id=b.id
+    inner join  book_categories bc on bc.id=b.book_category_id
+group by bc.name
+order by count(*) desc
+limit 1;
+
