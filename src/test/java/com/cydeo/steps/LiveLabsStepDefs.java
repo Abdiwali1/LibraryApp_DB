@@ -1,6 +1,7 @@
 package com.cydeo.steps;
 
 import com.cydeo.pages.BookPage;
+import com.cydeo.utility.BrowserUtil;
 import com.cydeo.utility.ConfigurationReader;
 import com.cydeo.utility.DB_Util;
 import io.cucumber.java.en.Given;
@@ -71,10 +72,12 @@ public class LiveLabsStepDefs {
     }
     @When("the librarian choose the book category {string}")
     public void the_librarian_choose_the_book_category(String bookCategory) {
+        BrowserUtil.selectByVisibleText(bookPage.categoryDropdown,bookCategory);
 
     }
     @When("the librarian click to save changes")
     public void the_librarian_click_to_save_changes() {
+        bookPage.saveChanges.click();
 
     }
     @Then("verify {string} message is displayed")
