@@ -1,7 +1,7 @@
 Feature: Books module
   As a librarian, I should be able to add new book into library
 
-  @wip
+  @wip @db
   Scenario Outline: Verify added book is matching with DB
     Given the user logged in as "librarian"
     And the user navigates to "Books" page
