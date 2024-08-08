@@ -67,3 +67,11 @@ limit 1;
 
 select name from books
 where name='Mollie Jacobs' and author='MS';
+
+select * from books;
+select * from book_categories;
+select * from book_borrow;
+
+-- driver dependency (specific to RDMS), Utils Class in detail
+-- Data Integrity testing verify UI with DB
+-- ETL Testing

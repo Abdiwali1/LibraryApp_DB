@@ -1,5 +1,6 @@
 package com.cydeo.pages;
 
+import com.cydeo.utility.BrowserUtil;
 import com.cydeo.utility.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -44,7 +45,7 @@ public class BookPage extends BasePage {
     @FindBy(id="book_group_id")
     public WebElement categoryDropdown;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(partialLinkText = "Save changes")
     public WebElement saveChanges;
 
     @FindBy(xpath = "//div[@class='toast-message']")
@@ -56,6 +57,15 @@ public class BookPage extends BasePage {
     public WebElement editBook(String book) {
         String xpath = "//td[3][.='" + book + "']/../td/a";
         return Driver.getDriver().findElement(By.xpath(xpath));
+    }
+
+    public void addBook(List<String> bookDetails){
+        bookName.sendKeys(bookDetails.get(0));
+        isbn.sendKeys(bookDetails.get(1));
+        year.sendKeys(bookDetails.get(2));
+        author.sendKeys(bookDetails.get(3));
+        BrowserUtil.selectByVisibleText(categoryDropdown,bookDetails.get(4));
+        saveChanges.click();
     }
 
 

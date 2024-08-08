@@ -9,6 +9,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.List;
+
 public class LiveLabsStepDefs {
 
     @Given("Establish the database connection")
@@ -32,7 +34,7 @@ public class LiveLabsStepDefs {
                 "limit 1";
 
         // Run Query
-        DB_Util.runQuery(query);
+        DB_Util.runQuery(query); // we have rs object
 
         // Retrieve data
         actualCategory = DB_Util.getFirstRowFirstColumn();
@@ -100,5 +102,10 @@ public class LiveLabsStepDefs {
         Assert.assertEquals(expectedBookName,actualBookName);
 
 
+    }
+
+    @When("the librarian add following book")
+    public void the_librarian_add_following_book(List<String> bookDetails) {
+        bookPage.addBook(bookDetails);
     }
 }

@@ -18,3 +18,17 @@ Feature: Books module
       | Book Name          | ISBN     | Year | Author | Book Category   |
       | Best Batch Ever 34 | 11200824 | 1960 | MS     | Fan-Fiction     |
       | Still Waiting      | 17521829 | 1988 | MS     | Science Fiction |
+
+
+  Scenario: Verify adding book as a list matching DB
+    Given the user logged in as "librarian"
+    And the user navigates to "Books" page
+    When the librarian click to add book
+    And the librarian add following book
+      | Blindness |
+      | 12349876  |
+      | 1970      |
+      | Jose      |
+      | Distopian |
+    Then verify "The book has been created." message is displayed
+    And verify "Blindness" information must match with DB
